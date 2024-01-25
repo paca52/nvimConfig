@@ -1,10 +1,12 @@
 ---@type MappingsTable
 local M = {}
 
--- local harpoon = require("harpoon")
-
 M.general = {
   n = {
+    [ "<C-u>" ] = { "<C-u>zz", "Move half a screen up" },
+    [ "<C-d>" ] = { "<C-d>zz", "Move half a screen down" },
+    [ "n" ] = { "nzzzv", "Find next instance" },
+    [ "N" ] = { "Nzzzv", "Find previous instance"},
     [";"] = { ":", "enter command mode", opts = { nowait = true } },
     ["<C-p>"] = {
       "<cmd> Telescope find_files <CR>",

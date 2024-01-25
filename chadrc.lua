@@ -11,7 +11,7 @@ M.ui = {
   hl_add = highlights.add,
 
   -- ui elements
-  -- telescope = { style = "borderless" }, -- borderless / bordered
+  telescope = { style = "bordered" }, -- borderless / bordered
   statusline = { theme = "vscode_colored", },
   tabufline = { enabled = false, },
   nvdash = {
