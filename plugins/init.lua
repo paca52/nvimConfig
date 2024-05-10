@@ -1,8 +1,14 @@
-local overrides = require("custom.configs.overrides")
-local telescope = require("custom.configs.telescope")
+local telescope = require("configs.telescope")
 
----@type NvPluginSpec[]
-local plugins = {
+return {
+  {
+    "stevearc/conform.nvim",
+    -- event = 'BufWritePre', -- uncomment for format on save
+    config = function()
+      require "configs.conform"
+    end,
+  },
+
   {
     "kdheepak/lazygit.nvim",
     lazy = true,
@@ -16,7 +22,9 @@ local plugins = {
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = { { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" } }
   },
+
   telescope,
+
   {
     'Wansmer/treesj',
     keys = "<leader>M",
@@ -27,10 +35,7 @@ local plugins = {
       end)
     end,
   },
-  {
-    "max397574/better-escape.nvim",
-    enabled = false
-  },
+
   {
     'stevearc/oil.nvim',
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -40,6 +45,7 @@ local plugins = {
       vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
     end,
   },
+
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
@@ -68,10 +74,6 @@ local plugins = {
     end
   },
 
-  {
-    "rbong/vim-flog",
-    lazy = false
-  },
   {
     "tpope/vim-fugitive",
     lazy = false
@@ -115,61 +117,17 @@ local plugins = {
   },
 
   {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      -- format & linting
-      {
-        "jose-elias-alvarez/null-ls.nvim",
-        config = function()
-          require "custom.configs.null-ls"
-        end,
-      },
-    },
-    config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
-    end, -- Override to setup mason-lspconfig
-  },
-
-  -- override plugin configs
-  {
-    "williamboman/mason.nvim",
-    opts = overrides.mason
-  },
-
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = overrides.treesitter,
-  },
-
-  {
-    "nvim-tree/nvim-tree.lua",
-    enabled = false,
-    opts = overrides.nvimtree,
-  },
-
-  -- Install a plugin
-  {
     "max397574/better-escape.nvim",
     event = "InsertEnter",
     config = function()
       require("better_escape").setup()
     end,
+    enabled = false
   },
 
-  -- To make a plugin not be loaded
-  -- {
-  --   "NvChad/nvim-colorizer.lua",
-  --   enabled = false
-  -- },
-
-  -- All NvChad plugins are lazy-loaded by default
-  -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
-  -- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
   {
     "mg979/vim-visual-multi",
     lazy = false,
   }
-}
 
-return plugins
+}

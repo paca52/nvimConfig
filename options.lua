@@ -1,17 +1,15 @@
--- local autocmd = vim.api.nvim_create_autocmd
+require "nvchad.options"
 
--- Auto resize panes when resizing nvim window
--- autocmd("VimResized", {
---   pattern = "*",
---   command = "tabdo wincmd =",
--- })
+-- add yours here!
+
+-- local o = vim.o
+-- o.cursorlineopt ='both' -- to enable cursorline!
+
 vim.g.maplocalleader = '\\'
 vim.wo.relativenumber = true
 vim.opt.guicursor = ""
 vim.wo.wrap = false
--- vim.opt.hisearch = false
--- vim.wo.conceallevel = 1
---
+
 vim.opt.wrap = false
 
 -- vim.opt.clipboard:append('unnamedplus')
