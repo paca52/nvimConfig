@@ -27,12 +27,12 @@ return {
 
   {
     'Wansmer/treesj',
-    keys = "<leader>M",
+    lazy = false,
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
     config = function()
       vim.keymap.set('n', '<leader>M', function()
         require('treesj').toggle({ split = { recursive = true } })
-      end)
+      end, { desc = "Fold/Unfold an object" })
     end,
   },
 
@@ -59,16 +59,16 @@ return {
   {
     "lervag/vimtex",
     lazy = false,
-    config = function()
-      vim.g.maplocalleader = '\\'
-      -- vim.g.tex_conceal='abdmg'
-    end,
+    -- config = function()
+    --   vim.g.maplocalleader = '\\'
+    --   -- vim.g.tex_conceal='abdmg'
+    -- end,
   },
 
   {
     "MunifTanjim/prettier.nvim",
     lazy = false,
-    config = function ()
+    config = function()
       local prettier = require("prettier")
       prettier.setup({ bin = 'prettier', }) -- or `'prettierd'` (v0.23.3+)
     end
@@ -82,7 +82,7 @@ return {
   {
     "windwp/nvim-ts-autotag",
     lazy = false,
-    config = function ()
+    config = function()
       require('nvim-ts-autotag').setup()
     end
   },
@@ -119,15 +119,20 @@ return {
   {
     "max397574/better-escape.nvim",
     event = "InsertEnter",
+    enabled = false,
     config = function()
       require("better_escape").setup()
     end,
-    enabled = false
   },
 
   {
     "mg979/vim-visual-multi",
     lazy = false,
-  }
+  },
+
+  {
+    "nvim-tree/nvim-tree.lua",
+    enabled = false,
+  },
 
 }
