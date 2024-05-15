@@ -4,6 +4,17 @@ local telescope = require("custom.configs.telescope")
 ---@type NvPluginSpec[]
 local plugins = {
   {
+    "michaelrommel/nvim-silicon",
+    lazy = true,
+    cmd = "Silicon",
+    config = function()
+      require("silicon").setup({
+        font = "JetBrainsMono Nerd Font=34",
+        theme = "Dracula"
+      });
+    end
+  },
+  {
     "kdheepak/lazygit.nvim",
     lazy = true,
     cmd = {
