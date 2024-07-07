@@ -10,7 +10,7 @@ local plugins = {
     config = function()
       require("silicon").setup({
         font = "JetBrainsMono Nerd Font=34",
-        theme = "Dracula"
+        theme = "gruvbox-dark",
       });
     end
   },
@@ -34,7 +34,9 @@ local plugins = {
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
     config = function()
       vim.keymap.set('n', '<leader>M', function()
-        require('treesj').toggle({ split = { recursive = true } })
+        local tsj = require('treesj')
+        tsj.setup({ max_join_length = 512 })
+        tsj.toggle({ split = { recursive = true } })
       end)
     end,
   },
@@ -47,7 +49,9 @@ local plugins = {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     lazy = false,
     config = function()
-      require("oil").setup()
+      require("oil").setup({
+        delete_to_trash = true
+      })
       vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
     end,
   },

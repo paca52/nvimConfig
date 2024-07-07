@@ -28,7 +28,7 @@ M.general = {
     ["<leader>a"] = {
       function()
         local harpoon = require("harpoon")
-        harpoon:list():append()
+        harpoon:list():add()
       end,
       "Harpoon Append"
     },

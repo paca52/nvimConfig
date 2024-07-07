@@ -13,6 +13,7 @@ local servers = {
   "texlab",
   "pyright",
   "intelephense",
+  "gopls",
 }
 
 for _, lsp in ipairs(servers) do
